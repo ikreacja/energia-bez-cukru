@@ -11,8 +11,6 @@ interface FilterSectionProps {
   setSelectedLevel: (level: string) => void;
   selectedTimeNeeded: string;
   setSelectedTimeNeeded: (time: string) => void;
-  selectedTrend: string;
-  setSelectedTrend: (trend: string) => void;
 }
 
 const FilterSection = ({
@@ -23,15 +21,13 @@ const FilterSection = ({
   setSelectedLevel,
   selectedTimeNeeded,
   setSelectedTimeNeeded,
-  selectedTrend,
-  setSelectedTrend,
 }: FilterSectionProps) => {
   return (
-    <section className="bg-gray-50 py-6 border-b border-gray-200">
+    <section className="bg-gray-50 py-8 border-b border-gray-200">
       <div className="container mx-auto px-4">
         <h2 className="text-xl font-semibold mb-4 text-gray-700">Filtruj porady</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Category Filter */}
           <div>
             <p className="text-sm font-medium mb-2 text-gray-700">Kategoria</p>
@@ -100,30 +96,6 @@ const FilterSection = ({
               <ToggleGroupItem value="wysoki" className="data-[state=on]:bg-red-500 data-[state=on]:text-white">
                 <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-1"></span>
                 Wysoki
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
-          
-          {/* Trend Filter */}
-          <div>
-            <p className="text-sm font-medium mb-2 text-gray-700">Trend</p>
-            <ToggleGroup 
-              type="single" 
-              value={selectedTrend}
-              onValueChange={(value) => value && setSelectedTrend(value)}
-              className="justify-start flex-wrap"
-            >
-              <ToggleGroupItem value="wszystkie" className="data-[state=on]:bg-red-500 data-[state=on]:text-white">
-                Wszystkie
-              </ToggleGroupItem>
-              <ToggleGroupItem value="rosnący" className="data-[state=on]:bg-purple-500 data-[state=on]:text-white">
-                ↗️ Rosnący
-              </ToggleGroupItem>
-              <ToggleGroupItem value="stabilny" className="data-[state=on]:bg-blue-500 data-[state=on]:text-white">
-                ➡️ Stabilny
-              </ToggleGroupItem>
-              <ToggleGroupItem value="malejący" className="data-[state=on]:bg-teal-500 data-[state=on]:text-white">
-                ↘️ Malejący
               </ToggleGroupItem>
             </ToggleGroup>
           </div>

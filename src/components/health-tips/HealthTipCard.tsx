@@ -11,20 +11,17 @@ interface HealthTipCardProps {
     description: string;
     level: string;
     timeNeeded: string;
-    trend: string;
   };
   onCardClick: (tip: any) => void;
   getLevelColor: (level: string) => string;
   getTimeNeededColor: (time: string) => string;
-  getTrendIcon: (trend: string) => string;
 }
 
 const HealthTipCard = ({ 
   tip, 
   onCardClick,
   getLevelColor,
-  getTimeNeededColor,
-  getTrendIcon
+  getTimeNeededColor
 }: HealthTipCardProps) => {
   return (
     <Card 
@@ -53,9 +50,6 @@ const HealthTipCard = ({
           <div className="flex items-center">
             <span className={`inline-block w-2 h-2 ${getTimeNeededColor(tip.timeNeeded)} rounded-full mr-1`}></span>
             <span className="capitalize">Nakład: {tip.timeNeeded}</span>
-          </div>
-          <div className="flex items-center">
-            <span>{getTrendIcon(tip.trend)}</span>
           </div>
         </div>
         <Button 

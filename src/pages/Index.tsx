@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,6 @@ import healthTipsData, {
   getUniqueCategories, 
   getLevelColor, 
   getTimeNeededColor, 
-  getTrendIcon,
   HealthTip
 } from '@/components/health-tips/HealthTipsData';
 
@@ -20,7 +18,6 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState('wszystkie');
   const [selectedLevel, setSelectedLevel] = useState('wszystkie');
   const [selectedTimeNeeded, setSelectedTimeNeeded] = useState('wszystkie');
-  const [selectedTrend, setSelectedTrend] = useState('wszystkie');
   const [filteredTips, setFilteredTips] = useState<HealthTip[]>(healthTipsData);
   const [selectedTip, setSelectedTip] = useState<HealthTip | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -57,13 +54,8 @@ const Index = () => {
       results = results.filter(tip => tip.timeNeeded === selectedTimeNeeded);
     }
     
-    // Apply trend filter
-    if (selectedTrend !== 'wszystkie') {
-      results = results.filter(tip => tip.trend === selectedTrend);
-    }
-    
     setFilteredTips(results);
-  }, [searchTerm, selectedCategory, selectedLevel, selectedTimeNeeded, selectedTrend]);
+  }, [searchTerm, selectedCategory, selectedLevel, selectedTimeNeeded]);
 
   const handleCardClick = (tip: HealthTip) => {
     setSelectedTip(tip);
@@ -120,8 +112,6 @@ const Index = () => {
         setSelectedLevel={setSelectedLevel}
         selectedTimeNeeded={selectedTimeNeeded}
         setSelectedTimeNeeded={setSelectedTimeNeeded}
-        selectedTrend={selectedTrend}
-        setSelectedTrend={setSelectedTrend}
       />
 
       {/* Content Section */}
@@ -144,7 +134,6 @@ const Index = () => {
                   setSelectedCategory('wszystkie');
                   setSelectedLevel('wszystkie');
                   setSelectedTimeNeeded('wszystkie');
-                  setSelectedTrend('wszystkie');
                 }}
               >
                 Wyczyść filtry
@@ -159,7 +148,6 @@ const Index = () => {
                   onCardClick={handleCardClick}
                   getLevelColor={getLevelColor}
                   getTimeNeededColor={getTimeNeededColor}
-                  getTrendIcon={getTrendIcon}
                 />
               ))}
             </div>
@@ -174,7 +162,6 @@ const Index = () => {
         tip={selectedTip}
         getLevelColor={getLevelColor}
         getTimeNeededColor={getTimeNeededColor}
-        getTrendIcon={getTrendIcon}
       />
 
       {/* Footer */}
