@@ -23,21 +23,21 @@ const FilterSection = ({
   setSelectedTimeNeeded,
 }: FilterSectionProps) => {
   return (
-    <section className="bg-gray-50 py-8 border-b border-gray-200">
+    <section className="bg-gray-50 py-12 border-b border-gray-200 min-h-[300px]">
       <div className="container mx-auto px-4">
-        <h2 className="text-xl font-semibold mb-4 text-gray-700">Filtruj porady</h2>
+        <h2 className="text-xl font-semibold mb-6 text-gray-700">Filtruj porady</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Category Filter */}
           <div>
-            <p className="text-sm font-medium mb-2 text-gray-700">Kategoria</p>
+            <p className="text-sm font-medium mb-3 text-gray-700">Kategoria</p>
             <Tabs defaultValue={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-              <TabsList className="w-full flex flex-wrap">
+              <TabsList className="w-full flex flex-wrap h-auto p-2 gap-2">
                 {categories.map((category) => (
                   <TabsTrigger 
                     key={category} 
                     value={category}
-                    className="flex-1 data-[state=active]:bg-red-500 data-[state=active]:text-white"
+                    className="flex-1 data-[state=active]:bg-red-500 data-[state=active]:text-white mb-2"
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </TabsTrigger>
@@ -48,12 +48,12 @@ const FilterSection = ({
           
           {/* Level Filter */}
           <div>
-            <p className="text-sm font-medium mb-2 text-gray-700">Poziom trudności</p>
+            <p className="text-sm font-medium mb-3 text-gray-700">Poziom trudności</p>
             <ToggleGroup 
               type="single" 
               value={selectedLevel}
               onValueChange={(value) => value && setSelectedLevel(value)}
-              className="justify-start flex-wrap"
+              className="justify-start flex-wrap gap-2"
             >
               <ToggleGroupItem value="wszystkie" className="data-[state=on]:bg-red-500 data-[state=on]:text-white">
                 Wszystkie
@@ -75,12 +75,12 @@ const FilterSection = ({
           
           {/* Time Needed Filter */}
           <div>
-            <p className="text-sm font-medium mb-2 text-gray-700">Nakład czasu</p>
+            <p className="text-sm font-medium mb-3 text-gray-700">Nakład czasu</p>
             <ToggleGroup 
               type="single" 
               value={selectedTimeNeeded}
               onValueChange={(value) => value && setSelectedTimeNeeded(value)}
-              className="justify-start flex-wrap"
+              className="justify-start flex-wrap gap-2"
             >
               <ToggleGroupItem value="wszystkie" className="data-[state=on]:bg-red-500 data-[state=on]:text-white">
                 Wszystkie
