@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -77,7 +78,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-                <span className="text-red-500">Zdrowe</span> Nawyki Żywieniowe
+                <span className="text-red-500">Energia</span> Bez Cukru
               </h1>
             </div>
             <div className="flex items-center space-x-2 w-full md:w-auto">
@@ -169,7 +170,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 text-sm mb-4 md:mb-0">
-              © 2025 Zdrowe Nawyki Żywieniowe. Wszystkie prawa zastrzeżone.
+              © 2025 Energia Bez Cukru. Wszystkie prawa zastrzeżone.
             </p>
             <div className="flex space-x-4">
               <Button variant="outline" size="sm" className="hover:bg-red-50 hover:text-red-500 transition-colors">

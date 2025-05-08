@@ -13,11 +13,11 @@ interface HealthTipDialogProps {
     content: string;
     level: string;
     timeNeeded: string;
-    trend: string;
+    trend?: string;  // Made the trend property optional
   } | null;
   getLevelColor: (level: string) => string;
   getTimeNeededColor: (time: string) => string;
-  getTrendIcon: (trend: string) => string;
+  getTrendIcon?: (trend: string) => string;  // Made the getTrendIcon property optional
 }
 
 const HealthTipDialog = ({ 
@@ -25,8 +25,7 @@ const HealthTipDialog = ({
   onOpenChange, 
   tip,
   getLevelColor,
-  getTimeNeededColor,
-  getTrendIcon
+  getTimeNeededColor
 }: HealthTipDialogProps) => {
   if (!tip) return null;
   
@@ -47,7 +46,7 @@ const HealthTipDialog = ({
         <div className="mt-2 text-gray-800">
           <p>{tip.content}</p>
           
-          <div className="mt-6 grid grid-cols-3 gap-4 text-sm">
+          <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
             <div className="flex flex-col items-center p-2 bg-gray-50 rounded">
               <span className="font-medium text-gray-700">Poziom trudności</span>
               <div className="flex items-center mt-1">
@@ -61,13 +60,6 @@ const HealthTipDialog = ({
               <div className="flex items-center mt-1">
                 <span className={`inline-block w-2 h-2 ${getTimeNeededColor(tip.timeNeeded)} rounded-full mr-1`}></span>
                 <span className="capitalize">{tip.timeNeeded}</span>
-              </div>
-            </div>
-            
-            <div className="flex flex-col items-center p-2 bg-gray-50 rounded">
-              <span className="font-medium text-gray-700">Trend</span>
-              <div className="flex items-center mt-1">
-                <span>{getTrendIcon(tip.trend)} {tip.trend}</span>
               </div>
             </div>
           </div>
